@@ -28,4 +28,9 @@ class Checkout_model extends CI_Model {
         $data = array('Status' => $status);
         return $this->db->update('Checkouts', $data, ['CheckoutID' => $checkId]);
     }
+
+	public function insert($data)
+	{
+			return $this->db->insert('checkouts', $data);
+	}
 }

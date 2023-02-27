@@ -28,7 +28,12 @@ class User extends CI_Controller {
 			$logdata = $this->user_model->login($username, $password);
 			// var_dump($logdata[0]);
 			$this->session->set_userdata($logdata[0]);
-			redirect('Dashboard/index');
+			
+			if ($logdata[0]['IsAdmin'] == 1) {
+				redirect('Dashboard/index');
+			} else {
+				redirect('Home/index');
+			}
 		}
 	}
 
